@@ -57,4 +57,39 @@ public class ArticleServiceImpl implements ArticleService {
     public Optional<Article> getByIdArticle(Long id) {
         return Optional.empty();
     }
+
+
+    @Override
+
+    public void DeleteByIdArticle(Long id){
+      articleRepository.deleteById(id) ;
+
+
+    }
+
+    public Article updateArticle(Long id , Article newArticle){
+        return
+                articleRepository.findById(id).map(
+                        article -> {
+                            article.setDesignation(newArticle.getDesignation());
+                            article.setCodeArticle(newArticle.getCodeArticle());
+                            article.setPrixHT(newArticle.getPrixHT());
+
+
+                            article.setPrixTTC(newArticle.getPrixHT() * article.getTauxTVA() / 100);
+
+
+
+                            return
+                                    articleRepository.save(article);
+
+                        } )
+
+
+
+
+                        .orElseThrow(()->new RuntimeException("Article Not found with id" + id )
+
+                        );
+    }
 }

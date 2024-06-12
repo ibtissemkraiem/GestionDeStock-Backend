@@ -14,4 +14,9 @@ public interface ArticleService {
     public Optional<Article> getByIdArticle(Long id);
 
 
+    public void DeleteByIdArticle(Long id);
+
+    public  Article updateArticle(Long id, Article newArticle);
+
+
 }

@@ -26,5 +26,19 @@ public class ArticleController {
     }
 
 
+    @DeleteMapping("/deleteArticle/{id}")
+    public void deleteByIdArticle(@PathVariable ("id") Long id) {
+
+                articleService.DeleteByIdArticle(id);
+    }
+    @PutMapping("/updateArticle/{id}")
+    public Article updateByIdArticle(@PathVariable ("id") Long id , @RequestBody Article article){
+      return
+               articleService.updateArticle(id,article);
+
+    }
+
+
+
 
 }
