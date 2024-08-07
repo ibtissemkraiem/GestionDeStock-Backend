@@ -1,6 +1,9 @@
 package com.example.angularsprinboot.models;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.beans.Transient;
 
 @Data
 
@@ -14,4 +17,10 @@ public class ArticleRequest {
 
     private int tauxTVA;
     private Long idCategorie;
+    // Nom de l'image du produit
+    private String image;
+
+    // Fichier image du produit (transient car non stocké en base de données)
+   // @Transient
+    private MultipartFile imageFile;
 }
